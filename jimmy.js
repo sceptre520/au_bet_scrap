@@ -9,8 +9,8 @@ const vgmUrl= 'https://www.jimmybet.com.au/Sport/Australian_Rules/AFL/Matches';
     const $ = cheerio.load(response.body);
 
     var events = $('.framePanel')
-    // for (x in events) {
-    //     console.log(events[x])
-    // }
-    console.log(events[0])
+    for (x in events) {
+        var tbody = events[x].find('tbody')
+        console.log(tbody)
+    }
 })()
