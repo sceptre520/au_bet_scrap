@@ -45,7 +45,6 @@ const vgmUrl= 'https://www.jimmybet.com.au/Sport/Australian_Rules/AFL/Matches';
                 var tmp_arr = tmp_str.split('@')
                 tmp_str = tmp_arr[tmp_arr.length-1]
                 tmp_str = tmp_str.trim()
-                tmp[markets[z]] = tmp_str
 
                 markets[indexes[z]].outcomes.push({
                     name: $(outcomes[y]).children('th').children('div').last().text(),
