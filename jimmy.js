@@ -28,7 +28,11 @@ const vgmUrl= 'https://www.jimmybet.com.au/Sport/Australian_Rules/AFL/Matches';
             }
             var odds = $(outcomes[y]).children('td')
             for(var z=0; z<market_len; z++) {
-                tmp[markets[z]] = $(odds[z]).children('a').text()
+                var tmp_str = $(odds[z]).children('a').text()
+                var tmp_arr = tmp_str.split('@')
+                tmp_str = tmp_arr[tmp_arr.length-1]
+                tmp_str = tmp_str.trim()
+                tmp[markets[z]] = tmp_str
             }
             console.log(tmp)
         }
