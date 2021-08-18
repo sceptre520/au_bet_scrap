@@ -10,7 +10,7 @@ const vgmUrl= 'https://www.jimmybet.com.au/Sport/Australian_Rules/AFL/Matches';
 
     var events = $('.framePanel')
     for (x in events) {
-        var tbody = events[x].find('tbody')
+        var tbody = $(events[x]).find('tbody')
         console.log(tbody)
     }
 })()
