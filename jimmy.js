@@ -16,7 +16,7 @@ const vgmUrl= 'https://www.jimmybet.com.au/Sport/Australian_Rules/AFL/Matches';
         var market_len = tds.length
         var markets = []
         for(var y=0; y<market_len; y++) {
-            markets.push($(tds)[y].text())
+            markets.push($(tds)[y].text)
         }
         console.log(markets)
         var tbody = $(events[x]).find('tbody')
@@ -24,11 +24,11 @@ const vgmUrl= 'https://www.jimmybet.com.au/Sport/Australian_Rules/AFL/Matches';
         var out_len = outcomes.length
         for(var y=0; y<out_len; y++) {
             var tmp = {
-                team_name: $(outcomes[y]).children('th').children('div').last().text()
+                team_name: $(outcomes[y]).children('th').children('div').last().text
             }
             var odds = $(outcomes[y]).children('td')
             for(var z=0; z<market_len; z++) {
-                tmp[markets[z]] = $(odds[z]).children('a').text()
+                tmp[markets[z]] = $(odds[z]).children('a').text
             }
             console.log(tmp)
         }
