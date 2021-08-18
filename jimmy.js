@@ -38,21 +38,25 @@ const vgmUrl= 'https://www.jimmybet.com.au/Sport/Australian_Rules/AFL/Matches';
         var tbody = $(events[x]).find('tbody')
         var outcomes = $(tbody).children('tr')
         var out_len = outcomes.length
+        var team_names = []
         for(var y=0; y<out_len; y++) {
             var odds = $(outcomes[y]).children('td')
+            var team_name = $(outcomes[y]).children('th').children('div').last().text()
+            team_names.push(team_name)
             for(var z=0; z<market_len; z++) {
                 var tmp_str = $(odds[z]).children('a').text()
                 var tmp_arr = tmp_str.split('@')
                 tmp_str = tmp_arr[tmp_arr.length-1]
                 tmp_str = tmp_str.trim()
-
+                
                 markets[indexes[z]].outcomes.push({
-                    name: $(outcomes[y]).children('th').children('div').last().text(),
+                    name: team_name,
                     price: tmp_str
                 })
             }
         }
-        console.log(markets)
+        console.log(team_names)
+        console.log(JSON.stringify(markets))
         console.log('------------   tbody   ---------------')
     }
 })()
