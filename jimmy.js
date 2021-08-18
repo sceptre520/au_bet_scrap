@@ -10,10 +10,10 @@ const vgmUrl= 'https://www.jimmybet.com.au/Sport/Australian_Rules/AFL/Matches';
 
     var events = $('.framePanel')
     var len = events.length
-    var markets = []
     for (var x=0; x<len; x++) {
         var thead = $(events[x]).find('thead')
         var tds = $(thead).find('td')
+        var markets = []
         var market_len = tds.length
         var indexes = []
         for(var y=0; y<market_len; y++) {
@@ -52,7 +52,7 @@ const vgmUrl= 'https://www.jimmybet.com.au/Sport/Australian_Rules/AFL/Matches';
                 })
             }
         }
+        console.log(markets)
         console.log('------------   tbody   ---------------')
     }
-    console.log(markets)
 })()
