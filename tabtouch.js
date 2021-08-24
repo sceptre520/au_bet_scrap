@@ -79,7 +79,7 @@ const getData = async (pmObj) => {
                     match_formated_name = tmp_arr[0]
                 }
             }
-            match_formated_name.replace(/ /g, '')
+            match_formated_name = match_formated_name.split(' ').join('');
             
             console.log(matchname)
             console.log(teams)
@@ -91,7 +91,9 @@ const getData = async (pmObj) => {
             })
         }
     }
-    console.log(markets)
+    console.log('---------------------------------------')
+    console.log(JSON.stringify(markets))
+    console.log('---------------------------------------')
 }
 
 var tmp_len = vgmObjs.length
