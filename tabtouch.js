@@ -9,7 +9,6 @@ const getData = async () => {
     var mainDiv = $('#propResult')
     var tbody = $(mainDiv).children('table').children('tbody')
     var trs = $(tbody).children('tr')
-    console.log(trs)
     var tr_len = trs.length
     for(var tpm_i=0; tpm_i<tr_len; tpm_i+=3) {
         var matchname = $(trs[tpm_i]).children('td').children('strong').text()
@@ -22,3 +21,4 @@ const getData = async () => {
     }
 }
 
+getData()
