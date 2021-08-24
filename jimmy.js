@@ -12,6 +12,7 @@ const vgmUrl= 'https://www.jimmybet.com.au/Sport/Australian_Rules/AFL/Matches';
     var len = events.length
     for (var x=0; x<len; x++) {
         var thead = $(events[x]).find('thead')
+        var match_time = $(thead).find('th').children('span').text()
         var tds = $(thead).find('td')
         var markets = []
         var market_len = tds.length
@@ -56,6 +57,7 @@ const vgmUrl= 'https://www.jimmybet.com.au/Sport/Australian_Rules/AFL/Matches';
             }
         }
         console.log(team_names)
+        console.log(match_time)
         console.log(JSON.stringify(markets))
         console.log('------------   tbody   ---------------')
     }
