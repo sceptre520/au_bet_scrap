@@ -50,10 +50,12 @@ const getData = async (pmObj) => {
         var tpm_i=0;
         while(tpm_i<tr_len) {
             var matchname = $(trs[tpm_i]).children('td').children('strong').text()
-            tmp_i ++;
+            
             var teams = []
             var odds = []
             console.log($(trs[tmp_i]).children('td').attr('colspan'))
+            console.log(tmp_i, tr_len)
+            tmp_i ++;
             // while($(trs[tmp_i+1]).children('td').attr('colspan') == null) {
             //     var team_name = $(trs[tpm_i]).children('td').first().next().text()
             //     var odd_val = $(trs[tpm_i]).children('td').last().children('a').children('span').text()
