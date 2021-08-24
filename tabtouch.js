@@ -53,9 +53,9 @@ const getData = async (pmObj) => {
             
             var teams = []
             var odds = []
-            console.log($(trs[tmp_i]).children('td').attr('colspan'))
-            console.log(tmp_i, tr_len)
-            tmp_i ++;
+            console.log($(trs[tpm_i]).children('td').attr('colspan'))
+            console.log(tpm_i, tr_len)
+            tpm_i ++;
             // while($(trs[tmp_i+1]).children('td').attr('colspan') == null) {
             //     var team_name = $(trs[tpm_i]).children('td').first().next().text()
             //     var odd_val = $(trs[tpm_i]).children('td').last().children('a').children('span').text()
