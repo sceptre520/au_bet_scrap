@@ -50,7 +50,7 @@ const getData = async (pmUrl) => {
                 tmp_str = tmp_arr[tmp_arr.length-1]
                 tmp_str = tmp_str.trim()
                 
-                markets[convertMarketName(indexes[z])].outcomes.push({
+                markets[indexes[z]].outcomes.push({
                     name: team_name,
                     price: tmp_str
                 })
