@@ -4,8 +4,8 @@ const got = require('got');
 const vgmUrl= 'https://www.jimmybet.com.au/Sport/Australian_Rules/AFL/Matches';
 // https://www.jimmybet.com.au/Sport/Baseball/Major_League_Baseball/Matches
 
-(async () => {
-    const response = await got(vgmUrl);
+const getData = async (pmUrl) => {
+    const response = await got(pmUrl);
     const $ = cheerio.load(response.body);
 
     var events = $('.framePanel')
@@ -57,8 +57,31 @@ const vgmUrl= 'https://www.jimmybet.com.au/Sport/Australian_Rules/AFL/Matches';
             }
         }
         console.log(team_names)
-        console.log(match_time)
+        console.log(convertTimeFormat(match_time))
         console.log(JSON.stringify(markets))
         console.log('------------   tbody   ---------------')
     }
-})()
+}
+
+function convertTimeFormat(pm_str) {
+    var tmp_arr = pm_str.split('@')
+    var dt_arr = tmp_arr[0].split(' ')
+    var tm_str = tmp_arr[1].trim()
+    var months = {
+        'January':'01',
+        'February':'02',
+        'March':'03',
+        'April':'04',
+        'May':'05',
+        'June':'06',
+        'July':'07',
+        'August':'08',
+        'September':'09',
+        'October':'10',
+        'November':'11',
+        'December':'12'
+    };
+    return dt_arr[3] + '-' + months[dt_arr[2]] + '-' + dt_arr[1] + 'T' + tm_str + ':00Z'
+}
+
+getData(vgmUrl)
