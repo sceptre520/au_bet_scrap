@@ -50,7 +50,7 @@ const getData = async (pmUrl) => {
                 tmp_str = tmp_arr[tmp_arr.length-1]
                 tmp_str = tmp_str.trim()
                 
-                markets[indexes[z]].outcomes.push({
+                markets[convertMarketName(indexes[z])].outcomes.push({
                     name: team_name,
                     price: tmp_str
                 })
@@ -82,6 +82,18 @@ function convertTimeFormat(pm_str) {
         'December':'12'
     };
     return dt_arr[3] + '-' + months[dt_arr[2]] + '-' + dt_arr[1] + 'T' + tm_str + ':00Z'
+}
+
+function convertMarketName(pm_name) {
+    var dict = {
+        'Win' : 'h2h',
+        'Line   ' : 'spreads',
+        'O/U' : 'totals',
+    }
+    if (dict[pm_name])
+        return dict[pm_name]
+    else
+        return ''
 }
 
 getData(vgmUrl)
