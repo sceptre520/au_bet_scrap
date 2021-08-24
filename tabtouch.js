@@ -50,22 +50,20 @@ const getData = async (pmObj) => {
         var tpm_i=0;
         while(tpm_i<tr_len) {
             var matchname = $(trs[tpm_i]).children('td').children('strong').text()
-            
+            tpm_i ++;
             var teams = []
             var odds = []
-            console.log($(trs[tpm_i]).children('td').attr('colspan'))
-            console.log(tpm_i, tr_len)
             tpm_i ++;
-            // while($(trs[tmp_i+1]).children('td').attr('colspan') == null) {
-            //     var team_name = $(trs[tpm_i]).children('td').first().next().text()
-            //     var odd_val = $(trs[tpm_i]).children('td').last().children('a').children('span').text()
-            //     teams.push(team_name)
-            //     odds.push(odd_val)
-            //     tmp_i ++
-            // }
-            // console.log(matchname)
-            // console.log(teams)
-            // console.log(odds)
+            while($(trs[tmp_i+1]).children('td').attr('colspan') == undefined) {
+                var team_name = $(trs[tpm_i]).children('td').first().next().text()
+                var odd_val = $(trs[tpm_i]).children('td').last().children('a').children('span').text()
+                teams.push(team_name)
+                odds.push(odd_val)
+                tpm_i ++
+            }
+            console.log(matchname)
+            console.log(teams)
+            console.log(odds)
             // markets[team_1+'_vs_'+team_2].push({
             //     key: pmObj.markets[mk_i].key,
             //     outcomes: []
