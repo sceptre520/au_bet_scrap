@@ -1,0 +1,32 @@
+['Western Bulldogs', 'Essendon Bombers']
+
+2021 - 08 - 29 T15: 20: 00 Z
+
+[{
+    "key": "h2h",
+    "outcomes": [{
+        "name": "Western Bulldogs",
+        "price": "1.58"
+    }, {
+        "name": "Essendon Bombers",
+        "price": "2.45"
+    }]
+}, {
+    "key": "",
+    "outcomes": [{
+        "name": "Western Bulldogs",
+        "price": "1.95"
+    }, {
+        "name": "Essendon Bombers",
+        "price": "1.85"
+    }]
+}, {
+    "key": "totals",
+    "outcomes": [{
+        "name": "Western Bulldogs",
+        "price": "1.90"
+    }, {
+        "name": "Essendon Bombers",
+        "price": "1.90"
+    }]
+}]

@@ -87,13 +87,14 @@ function convertTimeFormat(pm_str) {
 function convertMarketName(pm_name) {
     var dict = {
         'Win' : 'h2h',
-        'Line   ' : 'spreads',
+        'Line' : 'spreads',
+        'Draw' : 'draw',
         'O/U' : 'totals',
     }
     if (dict[pm_name])
         return dict[pm_name]
     else
-        return ''
+        return pm_name
 }
 
 getData(vgmUrl)
