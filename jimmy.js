@@ -22,15 +22,15 @@ const getData = async (pmUrl) => {
             var tmp_len = markets.length
             var flag = -1
             for(var z=0; z<tmp_len; z++) {
-                if(markets[convertMarketName(z)].key == market_name) {
-                    indexes.push(convertMarketName(z))
+                if(markets[z].key == convertMarketName(market_name)) {
+                    indexes.push(z)
                     flag = 1
                     break
                 }
             }
             if(flag == -1) {
                 markets.push({
-                    key: market_name,
+                    key: convertMarketName(market_name),
                     outcomes: []
                 })
                 indexes.push(markets.length-1)
