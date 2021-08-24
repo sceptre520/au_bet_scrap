@@ -50,6 +50,8 @@ const getData = async (pmObj) => {
         var tpm_i=0;
         while(tpm_i<tr_len) {
             var matchname = $(trs[tpm_i]).children('td').children('strong').text()
+            var matchtime = $(trs[tpm_i]).children('td').children('time').text()
+            matchtime = convertTimeFormat(matchtime)
             tpm_i ++;
             var teams = []
             var odds = []
@@ -79,24 +81,54 @@ const getData = async (pmObj) => {
                     match_formated_name = tmp_arr[0]
                 }
             }
+            var teams = match_formated_name
             match_formated_name = match_formated_name.split(' ').join('');
             
             console.log(matchname)
             console.log(teams)
             console.log(odds)
-            if (markets[match_formated_name] == null) markets[match_formated_name] = []
-            markets[match_formated_name].push({
+            if (markets[match_formated_name] == null) {
+                markets[match_formated_name] = {
+                    teams:teams,
+                    match_time:matchtime,
+                    markets:[]
+                }
+            }
+            markets[match_formated_name].markets.push({
                 key: pmObj.markets[mk_i].key,
                 outcomes: outcomes
             })
         }
     }
-    console.log('---------------------------------------')
-    console.log(JSON.stringify(markets))
-    console.log('---------------------------------------')
+    for (x in markets) {
+        console.log('---------------------------------------')
+        console.log(JSON.stringify(markets[x]))
+        console.log('---------------------------------------')
+    }
 }
 
 var tmp_len = vgmObjs.length
 for(var tmp_i=0; tmp_i<tmp_len; tmp_i++) {
     getData(vgmObjs[tmp_i])
+}
+
+function convertTimeFormat(pm_str) {
+    var tmp_arr = pm_str.split(',')
+    var dt_arr = tmp_arr[1].trim().split(' ')
+    var tm_str = tmp_arr[0].trim()
+    var months = {
+        'Jan':'01',
+        'Feb':'02',
+        'Mar':'03',
+        'Apr':'04',
+        'May':'05',
+        'Jun':'06',
+        'Jul':'07',
+        'Aug':'08',
+        'Sep':'09',
+        'Oct':'10',
+        'Nov':'11',
+        'Dec':'12'
+    };
+    return dt_arr[2] + '-' + months[dt_arr[1]] + '-' + dt_arr[0] + 'T' + tm_str + ':00Z'
 }
