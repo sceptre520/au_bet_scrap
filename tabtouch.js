@@ -53,23 +53,31 @@ const getData = async (pmObj) => {
             tpm_i ++;
             var teams = []
             var odds = []
-            tpm_i ++;
-            while($(trs[tpm_i]).children('td').attr('colspan') == undefined) {
+            var mkt_id = ''
+            var outcomes = []
+            while(tpm_i<tr_len && $(trs[tpm_i]).children('td').attr('colspan') == undefined) {
                 var team_name = $(trs[tpm_i]).children('td').first().next().text()
                 var odd_val = $(trs[tpm_i]).children('td').last().children('a').children('span').text()
                 teams.push(team_name)
                 odds.push(odd_val)
+                mkt_id += team_name.trim()
                 tpm_i ++
+                outcomes.push({
+                    name: team_name,
+                    price: odd_val
+                })
             }
             console.log(matchname)
             console.log(teams)
             console.log(odds)
-            // markets[team_1+'_vs_'+team_2].push({
-            //     key: pmObj.markets[mk_i].key,
-            //     outcomes: []
-            // })
+            if (markets[mkt_id] == null) markets[mkt_id] = []
+            markets[mkt_id].push({
+                key: pmObj.markets[mk_i].key,
+                outcomes: outcomes
+            })
         }
     }
+    console.log(markets)
 }
 
 var tmp_len = vgmObjs.length
