@@ -53,25 +53,39 @@ const getData = async (pmObj) => {
             tpm_i ++;
             var teams = []
             var odds = []
-            var mkt_id = ''
             var outcomes = []
             while(tpm_i<tr_len && $(trs[tpm_i]).children('td').attr('colspan') == undefined) {
                 var team_name = $(trs[tpm_i]).children('td').first().next().text()
                 var odd_val = $(trs[tpm_i]).children('td').last().children('a').children('span').text()
                 teams.push(team_name)
                 odds.push(odd_val)
-                mkt_id += team_name.trim()
                 tpm_i ++
                 outcomes.push({
                     name: team_name,
                     price: odd_val
                 })
             }
+            var match_formated_name = matchname
+            var tmp_arr = matchname.split(' - ')
+            if(tmp_arr.length == 2) {
+                tmp_arr = tmp_arr[0].split(' v ')
+                if(tmp_arr.length < 2) {
+                    tmp_arr = tmp_arr[0].split(' @ ')
+                }
+                if(tmp_arr.length == 2) {
+                    match_formated_name = tmp_arr[0] + tmp_arr[1]
+                }
+                else {
+                    match_formated_name = tmp_arr[0]
+                }
+            }
+            match_formated_name.replace(/ /g, '')
+            
             console.log(matchname)
             console.log(teams)
             console.log(odds)
-            if (markets[mkt_id] == null) markets[mkt_id] = []
-            markets[mkt_id].push({
+            if (markets[match_formated_name] == null) markets[match_formated_name] = []
+            markets[match_formated_name].push({
                 key: pmObj.markets[mk_i].key,
                 outcomes: outcomes
             })
