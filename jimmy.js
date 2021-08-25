@@ -43,8 +43,6 @@ const getData = async (pmUrl) => {
                 }
             }
         }
-        console.log(indexes)
-        return
         var tbody = $(events[x]).find('tbody')
         var outcomes = $(tbody).children('tr')
         var out_len = outcomes.length
@@ -65,10 +63,9 @@ const getData = async (pmUrl) => {
                         name: team_name,
                         price: draw_val
                     })
-                    continue
                 }
-                if(draw_flag != -1 && y!=0 && z>draw_flag) {
-                    markets[indexes[z+1]].outcomes.push({
+                if(draw_flag != -1 && y!=0 && z>=draw_flag) {
+                    markets[indexes[z]+1].outcomes.push({
                         name: team_name,
                         price: tmp_str
                     })
