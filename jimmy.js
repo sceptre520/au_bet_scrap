@@ -65,11 +65,11 @@ const getData = async (pmUrl) => {
                     })
                 }
                 if(draw_flag != -1 && y!=0 && z>=draw_flag) {
-                    console.log('z '+z+' o '+y)
-                    // markets[indexes[z]+1].outcomes.push({
-                    //     name: team_name,
-                    //     price: tmp_str
-                    // })
+                    if (z < market_len-1)
+                        markets[indexes[z]+1].outcomes.push({
+                            name: team_name,
+                            price: tmp_str
+                        })
                     continue
                 }
                 markets[indexes[z]].outcomes.push({
