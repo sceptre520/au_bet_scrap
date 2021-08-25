@@ -85,9 +85,6 @@ const getData = async (pmObj) => {
             }
             match_formated_name = match_formated_name.split(' ').join('');
             
-            console.log(matchname)
-            console.log(teams)
-            console.log(odds)
             if (markets[match_formated_name] == null) {
                 markets[match_formated_name] = {
                     teams:teams,

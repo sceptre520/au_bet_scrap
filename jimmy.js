@@ -1,8 +1,10 @@
 const cheerio = require('cheerio');
 const got = require('got');
 
-const vgmUrl= 'https://www.jimmybet.com.au/Sport/Australian_Rules/AFL/Matches';
-// https://www.jimmybet.com.au/Sport/Baseball/Major_League_Baseball/Matches
+// const vgmUrl= 'https://www.jimmybet.com.au/Sport/Australian_Rules/AFL/Matches';
+// const vgmUrl= 'https://www.jimmybet.com.au/Sport/Baseball/Major_League_Baseball/Matches'
+const vgmUrl= 'https://www.jimmybet.com.au/Sport/Soccer/American_Major_League_Soccer/Matches'
+
 
 const getData = async (pmUrl) => {
     const response = await got(pmUrl);
