@@ -43,6 +43,8 @@ const getData = async (pmUrl) => {
                 }
             }
         }
+        console.log(indexes)
+        return
         var tbody = $(events[x]).find('tbody')
         var outcomes = $(tbody).children('tr')
         var out_len = outcomes.length
